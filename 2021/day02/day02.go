@@ -12,27 +12,33 @@ import (
 
 func navigate(route []string) (int){
     var r int
-    position := 0
+    hPosition := 0
     depth := 0
+    aim := 0
     
     for r = 0; r <= len(route)-1; r++ {
         routeRawValues := strings.Fields(route[r])
         
         direction := routeRawValues[0]
-        units, _ := strconv.Atoi(routeRawValues[1])
+        unit, _ := strconv.Atoi(routeRawValues[1])
 
         if direction == "forward" {
-            position = position + units
+            hPosition += unit
+            depth += aim * unit
         } else if direction == "down" {
-            depth = depth + units
+            // depth += unit
+            aim += unit
         } else if direction == "up" {
-            depth = depth - units
+            // depth -= unit
+            aim -= unit
         }
         
-		fmt.Printf("Direction: %s Units: %d\n", direction, units)
+		fmt.Printf("Direction: %s Units: %d\n", direction, unit)
 	}
 
-    return depth * position
+	fmt.Printf("Direction: %d Postition: %d Aim: %d\n", depth, hPosition, aim)
+
+    return depth * hPosition
 }
 
 func readFile(path string) ([]string, error) {
@@ -51,6 +57,7 @@ func readFile(path string) ([]string, error) {
 }
 
 func main() {
+    // var commands = []string{"forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2"}
     var commands []string
 	absPath, _ := filepath.Abs("../2021/util/data/day02Input.txt")
 	lines, _ := readFile(absPath)
