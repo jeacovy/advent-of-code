@@ -50,7 +50,7 @@ func readFile(path string) ([]string, error) {
 
 func main() {
 	var measurments []int
-	absPath, _ := filepath.Abs("../advent-of-code/2021/util/data/day01Input.txt")
+	absPath, _ := filepath.Abs("../2021/util/data/day01Input.txt")
 	lines, _ := readFile(absPath)
 
     for _, line := range lines {
