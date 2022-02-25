@@ -125,13 +125,9 @@ func lifeSupportRating(sizeOfBinary int, binary []string, isOxygenGeneratorRatin
 		}
 	}
 
-	// if len(binary) == 1 {
 	rating, _ := strconv.ParseInt(binary[0], 2, 64)
 	fmt.Printf("Binary: %s \n", binary[0])
 	fmt.Printf("Rating: %d \n", rating)
-	// return rating
-
-	// return rating
 }
 func getBinaryIndex(binary []string, value string) int {
 	for b := 0; b <= len(binary)-1; b++ {
